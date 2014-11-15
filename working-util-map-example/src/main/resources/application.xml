@@ -10,7 +10,6 @@
 	<context:component-scan base-package="solutions.sundc.example.spring" />
 
 	<util:map id="myMapping" key-type="solutions.sundc.example.spring.utilmap.MyEnum" value-type="java.lang.String">
-		<!-- <entry key="#{T(solutions.sundc.example.spring.utilmap.MyEnum).ENUM1}" value="value1" /> -->
 		<entry key="ENUM1" value="value1" /> 
 		<entry key="ENUM2" value="value2" /> 
 	</util:map>
