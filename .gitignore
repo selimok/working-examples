@@ -1,0 +1,6 @@
+# Eclipse specific files
+.settings/
+.classpath
+.project
+.springBeans
+target/
