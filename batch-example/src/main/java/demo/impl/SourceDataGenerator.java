@@ -4,29 +4,25 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.Position;
-
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import demo.model.SourceData;
 
-@Component
-@StepScope
 public class SourceDataGenerator implements ItemReader<SourceData> {
 
-    private Integer readerPosition = 0;
+    private static Integer readerPosition = 0;
 
-    @Value("#{jobParameters['startValue']}")
+    @Value("#{jobExecution.jobParameters['startValue']}")
     private Long startValue = 1L;
 
-    @Value("#{jobParameters[endValue]}")
+    @Value("#{jobExecution.jobParameters['endValue']}")
     private Long endValue = 23L;
 
     private List<SourceData> sourceDataList = new ArrayList<SourceData>();

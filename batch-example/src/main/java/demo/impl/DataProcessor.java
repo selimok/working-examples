@@ -19,6 +19,7 @@ public class DataProcessor implements ItemProcessor<SourceData, TargetData> {
         if (sourceData != null) {
             Long sourceValue = sourceData.getValue();
             System.out.println("Processing source data " + sourceValue);
+            Thread.sleep(1000);
             Long targetValue = 0 - sourceValue;
             targetData = new TargetData(targetValue);
         }
