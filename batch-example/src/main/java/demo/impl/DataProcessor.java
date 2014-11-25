@@ -17,8 +17,8 @@ public class DataProcessor implements ItemProcessor<SourceData, TargetData> {
 	public TargetData process(SourceData sourceData) throws Exception {
 		TargetData targetData = null;
 		if(sourceData != null){
-			Integer sourceValue = sourceData.getValue();
-			Integer targetValue = 0 - sourceValue;
+			Long sourceValue = sourceData.getValue();
+			Long targetValue = 0 - sourceValue;
 			targetData = new TargetData(targetValue);
 		}
 		return targetData;

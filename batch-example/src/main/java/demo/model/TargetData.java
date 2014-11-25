@@ -2,17 +2,17 @@ package demo.model;
 
 public class TargetData {
 
-	private Integer value;
+	private Long value;
 
-	public TargetData(Integer value){
+	public TargetData(Long value){
 		this.value = value;
 	}
 
-	public Integer getValue() {
+	public Long getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Long value) {
 		this.value = value;
 	}
 

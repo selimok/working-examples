@@ -4,25 +4,28 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import demo.model.SourceData;
 
 @Component
-//@Scope("step")
+@StepScope
 public class SourceDataGenerator implements ItemReader<SourceData> {
 
 	private Integer readerPosition = 0;
 	
-	//@Value("#{jobParameters['startValue']}")
-	private Integer startValue = 5;
+	@Value("#{jobParameters['startValue']}")
+	private Long startValue = 1L;
 
-	//@Value("#{jobParameters['endValue']}")
-	private Integer endValue = 25; 
+	@Value("#{jobParameters[endValue]}")
+	private Long endValue = 23L; 
 	
 	private List<SourceData> sourceDataList = new ArrayList<SourceData>();
 	
@@ -32,7 +35,7 @@ public class SourceDataGenerator implements ItemReader<SourceData> {
 			throw new InvalidParameterException("Start value cannot be greater than end value.");
 		}
 		
-		for(int i = startValue; i <= endValue; i++){
+		for(long i = startValue; i <= endValue; i++){
 			sourceDataList.add(new SourceData(i));
 		}
 	}
