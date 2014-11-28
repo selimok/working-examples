@@ -4,6 +4,10 @@ public class TargetData {
 
 	private Long value;
 
+	public TargetData() {
+	    
+	}
+	
 	public TargetData(Long value){
 		this.value = value;
 	}

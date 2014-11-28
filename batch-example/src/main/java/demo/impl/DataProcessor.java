@@ -1,29 +1,26 @@
 package demo.impl;
 
-import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.stereotype.Component;
 
 import demo.model.SourceData;
 import demo.model.TargetData;
 
-
-//@Component
 public class DataProcessor implements ItemProcessor<SourceData, TargetData> {
 
-    public DataProcessor() {
-        // TODO Auto-generated constructor stub
-    }
+    // Actually result not belongs here!!! It should be created each time if
+    // process() called.
+    private TargetData targetData = new TargetData();
+
 
     @Override
     public TargetData process(SourceData sourceData) throws Exception {
-        TargetData targetData = null;
+        // TargetData targetData = null;
         if (sourceData != null) {
             Long sourceValue = sourceData.getValue();
             System.out.println("Processing source data " + sourceValue);
             Thread.sleep(1000);
             Long targetValue = 0 - sourceValue;
-            targetData = new TargetData(targetValue);
+            targetData.setValue(targetValue);
         }
         return targetData;
     }
